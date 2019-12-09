@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mha-manager:
+    container_name: manager
+    image: daryljocky/mha-manager:latest
+    entrypoint: "tailf /dev/null"
+    volumes:
+    - /dev/log:/dev/log
+    - /tmp:/tmp
+    - /etc/localtime:/etc/localtime:ro
+    - ./etc/mha:/etc/mha
+    - ./work:/usr/local/mha
+    - ../mysql-keys:/root/mha_share/sshkeys
+    - ./sshkeys/:/root/.ssh
+    - /data/var/log/mha:/var/log/mha

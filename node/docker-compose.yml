@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mariadb-mha-node2:
+    container_name: maraidb-node2
+    image: daryljocky/mha-maraidb-node:latest
+    environment:
+    - MYSQL_ROOT_PASSWORD=
+    - MYSQL_USER=
+    - MYSQL_PASSWORD=
+    volumes:
+    - /dev/log:/dev/log
+    - /tmp:/tmp
+    - /etc/localtime:/etc/localtime:ro
+    - ./etc/mysql:/etc/mysql
+    - /data/database/mariadb-node2:/var/lib/mysql
+    - ../mysql-keys:/root/mha_share/sshkeys
+    - ./sshkeys/:/root/.ssh
